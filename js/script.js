@@ -31,6 +31,8 @@ createApp({
 				},
 			],
 			activeSlide: 0,
+			prevIntervalId: null,
+			nextIntervalId: null,
 		};
 	},
 	methods: {
@@ -38,13 +40,13 @@ createApp({
 			return index == this.activeSlide ? `active` : ``;
 		},
 		prev() {
-			setInterval(() => {
+			this.prevIntervalId = setInterval(() => {
 				this.activeSlide--;
 				this.activeSlide < 0 ? (this.activeSlide = 4) : ``;
 			}, 3000);
 		},
 		next() {
-			setInterval(() => {
+			this.nextIntervalId = setInterval(() => {
 				this.activeSlide++;
 				this.activeSlide > 4 ? (this.activeSlide = 0) : ``;
 			}, 3000);
@@ -52,8 +54,10 @@ createApp({
 		clickThumbs(index) {
 			return (this.activeSlide = index);
 		},
+		stopAuto() {
+			clearInterval(this.prevIntervalId);
+			clearInterval(this.nextIntervalId);
+		},
 	},
-	mounted() {
-		console.log(this.slides[0].image);
-	},
+	mounted() {},
 }).mount("#app");

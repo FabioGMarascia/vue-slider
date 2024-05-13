@@ -17,7 +17,8 @@
 							v-for="slide, i in slides"
 							:src="slide.image"
 							class="slide"
-							:class="checkActive(i)" />
+							:class="checkActive(i)"
+							@mouseover="stopAuto()" />
 						<div class="text">
 							<h3>Spiderman</h3>
 							<p>
