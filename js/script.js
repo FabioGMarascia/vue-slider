@@ -38,15 +38,25 @@ createApp({
 			return index == this.activeSlide ? `active` : ``;
 		},
 		prev() {
-			this.activeSlide--;
-			this.activeSlide < 0 ? (this.activeSlide = 4) : ``;
+			setInterval(() => {
+				this.activeSlide--;
+				this.activeSlide < 0 ? (this.activeSlide = 4) : ``;
+			}, 3000);
 		},
 		next() {
-			this.activeSlide++;
-			this.activeSlide > 4 ? (this.activeSlide = 0) : ``;
+			setInterval(() => {
+				this.activeSlide++;
+				this.activeSlide > 4 ? (this.activeSlide = 0) : ``;
+			}, 3000);
 		},
 		clickThumbs(index) {
 			return (this.activeSlide = index);
+		},
+		autoPrev() {
+			setInterval(function () {
+				this.activeSlide--;
+				this.activeSlide < 0 ? (this.activeSlide = 4) : ``;
+			}, 1000);
 		},
 	},
 	mounted() {
