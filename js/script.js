@@ -37,6 +37,14 @@ createApp({
 		checkActive(index) {
 			return index == this.activeSlide ? `active` : ``;
 		},
+		prev() {
+			this.activeSlide--;
+			this.activeSlide < 0 ? (this.activeSlide = 4) : ``;
+		},
+		next() {
+			this.activeSlide++;
+			this.activeSlide > 4 ? (this.activeSlide = 0) : ``;
+		},
 	},
 	mounted() {
 		console.log(this.slides[0].image);
