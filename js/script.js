@@ -52,12 +52,6 @@ createApp({
 		clickThumbs(index) {
 			return (this.activeSlide = index);
 		},
-		autoPrev() {
-			setInterval(function () {
-				this.activeSlide--;
-				this.activeSlide < 0 ? (this.activeSlide = 4) : ``;
-			}, 1000);
-		},
 	},
 	mounted() {
 		console.log(this.slides[0].image);
