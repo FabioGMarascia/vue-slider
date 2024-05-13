@@ -31,7 +31,11 @@
 					<div class="thumbs">
 						<div class="prev" @click="prev()"></div>
 						<div class="next" @click="next()"></div>
-						<div v-for="thumb, i in slides" class="thumb" :class="checkActive(i)">
+						<div
+							v-for="thumb, i in slides"
+							class="thumb"
+							:class="checkActive(i)"
+							@click="clickThumbs(i)">
 							<img :src="thumb.image" />
 						</div>
 					</div>

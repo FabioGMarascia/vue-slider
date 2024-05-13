@@ -45,6 +45,9 @@ createApp({
 			this.activeSlide++;
 			this.activeSlide > 4 ? (this.activeSlide = 0) : ``;
 		},
+		clickThumbs(index) {
+			return (this.activeSlide = index);
+		},
 	},
 	mounted() {
 		console.log(this.slides[0].image);
