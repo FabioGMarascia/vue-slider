@@ -57,6 +57,7 @@ createApp({
 			this.checkAuto = 2;
 		},
 		clickThumbs(index) {
+			this.stopAuto();
 			return (this.activeSlide = index);
 		},
 		stopAuto() {
