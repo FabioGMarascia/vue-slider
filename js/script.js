@@ -33,6 +33,7 @@ createApp({
 			activeSlide: 0,
 			prevIntervalId: null,
 			nextIntervalId: null,
+			checkAuto: 0,
 		};
 	},
 	methods: {
@@ -40,16 +41,20 @@ createApp({
 			return index == this.activeSlide ? `active` : ``;
 		},
 		prev() {
+			clearInterval(this.nextIntervalId);
 			this.prevIntervalId = setInterval(() => {
 				this.activeSlide--;
 				this.activeSlide < 0 ? (this.activeSlide = 4) : ``;
 			}, 3000);
+			this.checkAuto = 1;
 		},
 		next() {
+			clearInterval(this.prevIntervalId);
 			this.nextIntervalId = setInterval(() => {
 				this.activeSlide++;
 				this.activeSlide > 4 ? (this.activeSlide = 0) : ``;
 			}, 3000);
+			this.checkAuto = 2;
 		},
 		clickThumbs(index) {
 			return (this.activeSlide = index);
@@ -57,6 +62,20 @@ createApp({
 		stopAuto() {
 			clearInterval(this.prevIntervalId);
 			clearInterval(this.nextIntervalId);
+		},
+		avvioAuto() {
+			this.checkAuto == 1
+				? (this.prevIntervalId = setInterval(() => {
+						this.activeSlide--;
+						this.activeSlide < 0 ? (this.activeSlide = 4) : ``;
+				  }, 3000))
+				: ``;
+			this.checkAuto == 2
+				? (this.nextIntervalId = setInterval(() => {
+						this.activeSlide++;
+						this.activeSlide > 4 ? (this.activeSlide = 0) : ``;
+				  }, 3000))
+				: ``;
 		},
 	},
 	mounted() {},
