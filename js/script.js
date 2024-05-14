@@ -52,7 +52,7 @@ createApp({
 			clearInterval(this.prevIntervalId);
 			this.nextIntervalId = setInterval(() => {
 				this.activeSlide++;
-				this.activeSlide > 4 ? (this.activeSlide = 0) : ``;
+				this.activeSlide > this.slides.length - 1 ? (this.activeSlide = 0) : ``;
 			}, 3000);
 			this.checkAuto = 2;
 		},
@@ -73,7 +73,7 @@ createApp({
 			this.checkAuto == 2
 				? (this.nextIntervalId = setInterval(() => {
 						this.activeSlide++;
-						this.activeSlide > 4 ? (this.activeSlide = 0) : ``;
+						this.activeSlide > this.slides.length - 1 ? (this.activeSlide = 0) : ``;
 				  }, 3000))
 				: ``;
 		},
